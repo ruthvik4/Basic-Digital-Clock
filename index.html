@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        .clock {
+            position: absolute;
+            color: aliceblue;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            /*Just like an animation clock will be in center*/
+            font-size: 60px;
+            font-family: Orbitron;
+            letter-spacing: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Digital Clock" class="clock">
+
+    </div>
+    <script type="text/javascript">
+        function showTime() {
+            var date = new Date(); // Object - this date method has current date and time
+            var h = date.getHours(); // this will be getting the data of Hours
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = "AM";
+            if (h == 0) {
+                h = 12; // 12 - Hour Format
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById("Digital Clock").innerHTML = h + ":" + m + ":" + s + " " + session;
+            setTimeout(showTime, 1000);
+            // runs upto the particular time we wanted to ans as we need every second we give 1000ms
+        }
+        showTime();
+    </script>
+</body>
+
+</html>
